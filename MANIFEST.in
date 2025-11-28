@@ -1,2 +1,2 @@
-include src/*.pyi
+recursive-include src *.pyi
 include src/py.typed
