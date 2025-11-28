@@ -2,16 +2,16 @@
 import os
 from setuptools import setup
 
-# 动态扫描 src/ 下所有 .pyi 文件，提取模块名
-src_dir = os.path.join(os.path.dirname(__file__), "src")
-pyi_modules = []
-if os.path.exists(src_dir):
-    for filename in os.listdir(src_dir):
-        if filename.endswith(".pyi"):
-            module_name = filename[:-4]  # 去掉 .pyi
-            pyi_modules.append(module_name)
+src_dir = "src"
+py_modules = []
+if os.path.isdir(src_dir):
+    for f in os.listdir(src_dir):
+        if f.endswith(".pyi"):
+            py_modules.append(f[:-4])  # 去掉 .pyi
 
-# 注意：即使有 pyproject.toml，setuptools 也会读取 setup.py 中的 py_modules
+print("Stub modules:", sorted(py_modules))
+
 setup(
-    py_modules=pyi_modules,
+    py_modules=sorted(set(py_modules)),
+    package_dir={"": "src"},  # 顶级模块在 src/
 )
