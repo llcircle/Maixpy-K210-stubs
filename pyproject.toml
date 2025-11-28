@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "MaixpyK210_stubs"
+version = "0.1.0"
+description = "Type stubs for MaixpyK210"
+requires-python = ">=3.9"
+
+
+[tool.setuptools]
+py-modules = []  
+
+
+[tool.setuptools.package-data]
+"*" = ["py.typed"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
